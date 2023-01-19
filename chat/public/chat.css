@@ -39,9 +39,24 @@ body {
     justify-content: space-between;
 }
 
-.userInfo .username {
+.userInfo .user .username {
     font-size: 1.3rem;
     color: #fff;
+}
+
+.userInfo .user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.userInfo .user .userProfile {
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+}
+.userInfo .user .userProfile img {
+    width: 100%;
 }
 
 .userInfo ul li {
