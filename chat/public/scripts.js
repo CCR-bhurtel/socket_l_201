@@ -9,11 +9,15 @@ if (!chatId) {
     localStorage.setItem('chatid', chatId);
 }
 
-const socket = io('/');
-const socket2 = io('/admin');
+const socket = io('http://localhost:9000/');
+const socket2 = io('http://localhost:9000/admin');
 
 socket.on('messageToClients', (message) => {
     appendMessage(message);
+});
+
+socket2.on('joined', (message) => {
+    console.log(message);
 });
 
 document.querySelector('#message-form').addEventListener('submit', (e) => {

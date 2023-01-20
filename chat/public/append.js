@@ -4,7 +4,6 @@ const appendMessage = (message) => {
     const messageBulk = messageContainer.lastElementChild;
 
     let heightToBeAdded = 0;
-    console.log(messageBulk);
     if (message.id == chatId) {
         const messageEl = document.createElement('div');
         messageEl.classList.add('message');
@@ -43,7 +42,5 @@ const appendMessage = (message) => {
             messageContainer.appendChild(newMessageBulk);
         }
     }
-    const currentScrollTop = messageContainer.scrollTop;
-    console.log(currentScrollTop, heightToBeAdded);
     messageContainer.scrollTop = messageContainer.scrollHeight;
 };

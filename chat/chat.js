@@ -23,9 +23,21 @@ const io = socketio(expressServer, {
     },
 });
 
+const adminNamespace = io.of('/admin');
+adminNamespace.use((socket, next) => {
+    next();
+});
 // admin namespace
-io.of('/admin').on('connection', (socket) => {
-    console.log(socket.id);
+
+adminNamespace.on('connection', (socket) => {
+    console.log(`${socket.id} in admin room`);
+    socket.join('adminChannel');
+    adminNamespace.to('adminChannel').emit('joined', `Welcome to admin room, ${socket.id} `);
+    socket.emit('welcome', { text: 'Hello everybody, welcome to the room' });
+    socket.on('messageToAdmin', (message) => {
+        console.log('Hello world');
+        console.log(message);
+    });
 });
 
 // main namespace
@@ -38,10 +50,6 @@ io.on('connection', (socket) => {
     socket.on('newMessageToServer', (message) => {
         io.emit('messageToClients', message);
     });
-});
-
-io.of('/admin').on('connection', (socket) => {
-    socket.emit('welcome', { text: 'Hello everybody, welcome to the room' });
 });
 
 app.get('/', (req, res) => {

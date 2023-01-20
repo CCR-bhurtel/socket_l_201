@@ -51,12 +51,14 @@ body {
 }
 
 .userInfo .user .userProfile {
-    height: 1.5rem;
-    width: 1.5rem;
-    border-radius: 50%;
+    height: 2.3rem;
+    width: 2.5rem;
+    margin-right: 1rem;
 }
 .userInfo .user .userProfile img {
     width: 100%;
+    border-radius: 50%;
+    height: 100%;
 }
 
 .userInfo ul li {
@@ -141,6 +143,7 @@ form input[type='text']:focus {
     border-radius: 5px;
     margin-top: 5px;
     max-width: fit-content;
+    word-break: break-all;
 }
 
 .my-message {
